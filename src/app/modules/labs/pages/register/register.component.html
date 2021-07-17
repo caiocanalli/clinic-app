@@ -1,0 +1,37 @@
+<div class="row margin-top-40">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Laboratórios
+      </div>
+      <div class="card-body padding-16">
+        <div class="row">
+          <div class="col-12">
+            <div class="float-end">
+              <button type="button" class="btn btn-success" [disabled]="!form.valid"
+                (click)="registerClick()">Cadastrar</button>
+              <a class="btn btn-outline-primary margin-left-8" [routerLink]="'/lab/home'">Voltar</a>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-16 margin-bottom-16">
+          <div class="col-12">
+            <form [formGroup]="form" novalidate>
+              <div class="row">
+                <div class="col-6">
+                  <label for="name">Nome</label>
+                  <input formControlName="name" type="text" class="form-control" autocomplete="off" placeholder="Nome">
+                </div>
+                <div class="col-6">
+                  <label for="address">Endereço</label>
+                  <input formControlName="address" type="text" class="form-control" autocomplete="off"
+                    placeholder="Endereço">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="row margin-top-40">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Laboratórios
+      </div>
+      <div class="card-body padding-16">
+        <div class="row">
+          <div class="col-12">
+            <div class="float-end">
+              <div class="btn-group" role="group">
+                <a class="btn btn-success" [routerLink]="['/lab/register']">Cadastrar</a>
+                <button type="button" class="btn btn-primary" [disabled]="!editEnabled()"
+                  (click)="editLabClick()">Editar</button>
+                <button type="button" class="btn btn-warning" [disabled]="!editEnabled()"
+                  (click)="setStatusClick()">Ativar/Inativar</button>
+              </div>
+              <button class="btn btn-primary margin-left-8" (click)="searchClick();">Pesquisar</button>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-16">
+          <div class="col-12">
+            <form [formGroup]="form" novalidate>
+              <div class="row">
+                <div class="col-4">
+                  <label for="id">Código</label>
+                  <input type="number" formControlName="id" class="form-control" min="1" autocomplete="off"
+                    placeholder="Código">
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" formControlName="name" class="form-control" autocomplete="off"
+                      placeholder="Nome">
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group">
+                    <label for="status">Situação</label>
+                    <select formControlName="status" class="form-control" autocomplete="off" placeholder="Situação">
+                      <option selected="selected" value="0">Todos</option>
+                      <option value="1">Ativo</option>
+                      <option value="2">Inativo</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row margin-top-16">
+          <div class="col-12">
+            <table class="table" style="max-height: 500px;">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="form-check-input" [checked]="selected" (change)="selectLabs($event)"
+                      [disabled]="labs.length === 0" />
+                  </th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Endereço</th>
+                  <th scope="col">Situação</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lab of labs; index as i">
+                  <td scope="row">
+                    <input type="checkbox" [checked]="lab.selected" (change)="selectLab(i)" class="form-check-input" />
+                  </td>
+                  <td>{{lab.id}}</td>
+                  <td>{{lab.name}}</td>
+                  <td>{{lab.address}}</td>
+                  <td>{{lab.statusLabel}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="float-end">
+          <button class="btn btn-outline-secondary" (click)="moreClick();" [disabled]="!hasMore">Próximos registros</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

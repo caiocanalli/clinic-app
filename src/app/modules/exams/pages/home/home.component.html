@@ -1,0 +1,96 @@
+<div class="row margin-top-40">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Exames
+      </div>
+      <div class="card-body padding-16">
+        <div class="row">
+          <div class="col-12">
+            <div class="float-end">
+              <div class="btn-group" role="group">
+                <a class="btn btn-success" [routerLink]="['/exam/register']">Cadastrar</a>
+                <button type="button" class="btn btn-primary" [disabled]="!editEnabled()"
+                  (click)="editExamClick()">Editar</button>
+                <button type="button" class="btn btn-warning" [disabled]="!editEnabled()"
+                  (click)="setStatusClick()">Ativar/Inativar</button>
+              </div>
+              <button class="btn btn-primary margin-left-8" (click)="searchClick();">Pesquisar</button>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-16">
+          <div class="col-12">
+            <form [formGroup]="form" novalidate>
+              <div class="row">
+                <div class="col-3">
+                  <label for="id">Código</label>
+                  <input type="number" formControlName="id" class="form-control" min="1" autocomplete="off"
+                    placeholder="Código">
+                </div>
+                <div class="col-3">
+                  <label for="name">Nome</label>
+                  <input type="text" formControlName="name" class="form-control" autocomplete="off" placeholder="Nome">
+                </div>
+                <div class="col-3">
+                  <label for="type">Tipo</label>
+                  <select formControlName="type" class="form-control" autocomplete="off" placeholder="Tipo">
+                    <option selected="selected" value="0">Todos</option>
+                    <option value="1">Análises clínicas</option>
+                    <option value="2">Imagem</option>
+                  </select>
+                </div>
+                <div class="col-3">
+                  <label for="status">Situação</label>
+                  <select formControlName="status" class="form-control" autocomplete="off" placeholder="Situação">
+                    <option selected="selected" value="0">Todos</option>
+                    <option value="1">Ativo</option>
+                    <option value="2">Inativo</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="row margin-top-16">
+          <div class="col-12">
+            <table class="table" style="max-height: 500px;">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="form-check-input" [checked]="selected" (change)="selectExams($event)"
+                      [disabled]="exams.length === 0" />
+                  </th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Situação</th>
+                  <th scope="col">Laboratório</th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-template ngFor let-exam let-i="index" [ngForOf]="exams">
+                  <tr *ngFor="let lab of exam.labs">
+                    <td scope="row">
+                      <input type="checkbox" [checked]="exam.selected" (change)="selectExam(i)"
+                        class="form-check-input" />
+                    </td>
+                    <td>{{exam.id}}</td>
+                    <td>{{exam.name}}</td>
+                    <td>{{exam.typeLabel}}</td>
+                    <td>{{exam.statusLabel}}</td>
+                    <td>{{lab.name}}</td>
+                  </tr>
+                </ng-template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="float-end">
+          <button class="btn btn-outline-secondary" (click)="moreClick();" [disabled]="!hasMore">Carregar
+            mais</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

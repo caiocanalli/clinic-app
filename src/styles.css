@@ -1,0 +1,69 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #000000;
+    font-size: 16px;
+    background-color: #EFEFEF;
+    font-family: 'Museo Sans 300', Helvetica, Arial, sans-serif;
+}
+
+@font-face {
+    font-family: 'Museo Sans 300';
+    src: url('assets/fonts/museo-sans-300-webfont.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Museo Sans 500';
+    src: url('assets/fonts/museo-sans-500-webfont.woff2') format('woff2');
+}
+
+.margin-top-8 {
+    margin-top: 8px;
+}
+
+.margin-top-16 {
+    margin-top: 16px;
+}
+
+.margin-top-24 {
+    margin-top: 24px;
+}
+
+.margin-top-40 {
+    margin-top: 40px;
+}
+
+.margin-left-8 {
+    margin-left: 8px;
+}
+
+.margin-bottom-16 {
+    margin-bottom: 16px;
+}
+
+.padding-16 {
+    padding: 16px;
+}
+
+table {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+}
+
+thead {
+  flex: 0 0 auto;
+}
+
+tbody {
+  flex: 1 1 auto;
+  display: block;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+tr {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}

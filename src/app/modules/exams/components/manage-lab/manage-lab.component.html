@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header">
+        Laboratórios
+      </div>
+      <div class="card-body padding-16">
+        <div class="row">
+          <div class="col-12">
+            <div class="float-end">
+              <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal"
+                data-bs-target="#searchModal">Adicionar</button>
+              <button type="button" class="btn btn-warning margin-left-8" (click)="removeClick()"
+                [disabled]="!removeEnabled()">Remover</button>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-16 margin-bottom-16">
+          <div class="col-12">
+            <table class="table" style="max-height: 500px;">
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <input type="checkbox" class="form-check-input" [checked]="selected" (change)="selectLabs($event)"
+                      [disabled]="labs.length === 0" />
+                  </th>
+                  <th scope="col">Código</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Endereço</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lab of labs; index as i">
+                  <td scope="row">
+                    <input type="checkbox" [checked]="lab.selected" (change)="selectLab(i)" class="form-check-input" />
+                  </td>
+                  <td>{{lab.id}}</td>
+                  <td>{{lab.name}}</td>
+                  <td>{{lab.address}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="searchModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <app-search-lab (labsSelected)="labsSelectedEmit($event)"></app-search-lab>
+    </div>
+  </div>
+</div>

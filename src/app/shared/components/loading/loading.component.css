@@ -1,0 +1,64 @@
+.align {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  z-index: 10000;
+}
+
+.loading-bg {
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  opacity: 0.75;
+  position: fixed;
+  z-index: 10000;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -14px 0 0 -14px;
+  z-index: 10001;
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 0.0625rem solid #EFE9E5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading .maskedCircle {
+  width: 20px;
+  height: 20px;
+  border-radius: 12px;
+  border: 3px solid #0d6efd;
+}
+
+.loading .mask {
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.loading .spinner {
+  left: 1px;
+  top: 1px;
+  width: 26px;
+  height: 26px;
+  animation: spin 1s infinite linear;
+}
